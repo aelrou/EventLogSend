@@ -12,14 +12,9 @@ namespace EventLogSend
             foreach (EventLog e in eventLogs)
             {
                 RegistryKey? regEventLog = null;
-                object? path = null;
-                FileInfo? file = null;
-                ulong? sizeKB = null;
-
-                Console.WriteLine();
-                Console.WriteLine(string.Concat(e.LogDisplayName, ":"));
-                Console.WriteLine(string.Concat("  Log name =\t\t", e.Log.ToString()));
-                Console.WriteLine(string.Concat("  Log entry count =\t", e.Entries.Count.ToString()));
+                object? logPath = null;
+                FileInfo? logFile = null;
+                ulong? logSize = null;
 
                 try
                 {
@@ -28,41 +23,41 @@ namespace EventLogSend
                     ArgumentNullException.ThrowIfNull(regEventLog);
                     try
                     {
-                        path = regEventLog.GetValue("File");
-                        ArgumentNullException.ThrowIfNull(path);
-                        Console.WriteLine(string.Concat("  Log file path =\t", path.ToString()));
+                        logPath = regEventLog.GetValue("File");
+                        ArgumentNullException.ThrowIfNull(logPath);
                         try
                         {
-                            file = new FileInfo(path.ToString());
-                            ArgumentNullException.ThrowIfNull(file);
-                            // Get the event log file size
-                            sizeKB = Convert.ToUInt64(file.Length / 1024);
-                            if ((file.Length % 1024) != 0)
-                            {
-                                sizeKB++;
-                            }
-                            Console.WriteLine(string.Concat("  Current size =\t", sizeKB.ToString(), " kilobytes"));
+                            logFile = new FileInfo(logPath.ToString()!);
+                            ArgumentNullException.ThrowIfNull(logFile);
+                            // Get event log file size in kilobytes
+                            logSize = Convert.ToUInt64(Math.Ceiling(Convert.ToDecimal(logFile.Length / 1024)));
                         }
-                        catch (ArgumentNullException exception)
+                        catch (ArgumentNullException)
                         {
-                            Console.WriteLine(exception.Message);
+                            logSize = 0;
                         }
                     }
                     catch (ArgumentNullException)
                     {
-                        Console.WriteLine("  Log file path =\t<not set>");
+                        logPath = "<not set>";
+                        logSize = 0;
                     }
                 }
-                catch (ArgumentNullException exception)
+                catch (ArgumentNullException)
                 {
-                    Console.WriteLine(exception.Message);
+                    logPath = "<not set>";
+                    logSize = 0;
                 }
 
-                // Get event log overwrite policies
-                sizeKB = Convert.ToUInt64(e.MaximumKilobytes);
-                Console.WriteLine(string.Concat("  Maximum size =\t", sizeKB.ToString(), " kilobytes"));
+                Console.WriteLine();
+                Console.WriteLine(string.Concat(e.LogDisplayName, ":"));
+                Console.WriteLine(string.Concat("  Log name =\t\t", e.Log.ToString()));
+                Console.WriteLine(string.Concat("  Log entry count =\t", e.Entries.Count.ToString()));
+                Console.WriteLine(string.Concat("  Log file path =\t", logPath.ToString()));
+                Console.WriteLine(string.Concat("  Current size =\t", logSize.ToString(), " kilobytes"));
+                // Get event log overwrite policy
+                Console.WriteLine(string.Concat("  Maximum size =\t", e.MaximumKilobytes.ToString(), " kilobytes"));
                 Console.WriteLine(string.Concat("  Overflow setting =\t", e.OverflowAction.ToString()));
-
                 switch (e.OverflowAction)
                 {
                     case OverflowAction.OverwriteOlder:
