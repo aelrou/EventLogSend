@@ -13,7 +13,7 @@ namespace EventLogSend
                 Console.WriteLine(string.Concat("Log: ", log.Log));
             }
 
-            ReportEventLog.Properties();
+            ReportEventLogIf.Properties();
         }
     }
 }

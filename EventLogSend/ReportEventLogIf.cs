@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace EventLogSend
 {
-    public static class ReportEventLog
+    public static class ReportEventLogIf
     {
         public static void Properties()
         {
@@ -16,34 +16,31 @@ namespace EventLogSend
                 FileInfo? logFile = null;
                 ulong? logSize = null;
 
-                try
+                // Get event log file if there is one
+                regEventLog = Registry.LocalMachine.OpenSubKey(string.Concat("System\\CurrentControlSet\\Services\\EventLog\\", e.Log));
+                if (regEventLog != null)
                 {
-                    // Get event log file if there is one
-                    regEventLog = Registry.LocalMachine.OpenSubKey(string.Concat("System\\CurrentControlSet\\Services\\EventLog\\", e.Log));
-                    ArgumentNullException.ThrowIfNull(regEventLog);
-                    try
+                    logPath = regEventLog.GetValue("File");
+                    if (logPath != null)
                     {
-                        logPath = regEventLog.GetValue("File");
-                        ArgumentNullException.ThrowIfNull(logPath);
-                        try
+                        logFile = new FileInfo(logPath.ToString()!);
+                        if (logFile != null)
                         {
-                            logFile = new FileInfo(logPath.ToString()!);
-                            ArgumentNullException.ThrowIfNull(logFile);
                             // Get event log file size in kilobytes
                             logSize = Convert.ToUInt64(Math.Ceiling(Convert.ToDecimal(logFile.Length / 1024)));
                         }
-                        catch (ArgumentNullException)
+                        else
                         {
                             logSize = 0;
                         }
                     }
-                    catch (ArgumentNullException)
+                    else
                     {
                         logPath = "<not set>";
                         logSize = 0;
                     }
                 }
-                catch (ArgumentNullException)
+                else
                 {
                     logPath = "<not set>";
                     logSize = 0;
