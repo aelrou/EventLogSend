@@ -1,10 +1,18 @@
 ﻿using System.Diagnostics;
+using EventLogSend.Method;
 
 namespace EventLogSend
 {
     public static class Constants
     {
         public const string DateFormat = "yyyy-MM-dd HH:mm:ss";
+        public const string WorkDir = "C:\\Users\\Public\\EventLogSend";
+        public const string OutputFile = "Output.log";
+    }
+
+    public static class Line
+    {
+        public static List<string> Store = new List<string>();
     }
     public static class Program
     {
@@ -18,6 +26,16 @@ namespace EventLogSend
             //}
 
             ReportEventLog.Properties();
+
+            if (Directory.Exists(Constants.WorkDir))
+            {
+                Log.Write(Line.Store);
+            }
+            else
+            {
+                Directory.CreateDirectory(Constants.WorkDir);
+                Log.Write(Line.Store);
+            }
         }
     }
 }

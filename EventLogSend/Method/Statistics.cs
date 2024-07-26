@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Globalization;
 
 namespace EventLogSend.Method
 {
@@ -40,12 +39,13 @@ namespace EventLogSend.Method
                         }
                     }
                 }
-                Console.WriteLine(string.Concat(eventLogName, " log counts"));
-                Console.WriteLine(string.Concat("  Critical\t", criticalCount.ToString()));
-                Console.WriteLine(string.Concat("  Error   \t", errorCount.ToString()));
-                Console.WriteLine(string.Concat("  Warning \t", warningCount.ToString()));
-                Console.WriteLine(string.Concat("  Information\t", informationCount.ToString()));
-                Console.WriteLine(string.Concat("  Missed  \t", eventLogEntriesHs.Count - (criticalCount + errorCount + warningCount + informationCount)));
+                Line.Store.Add("");
+                Line.Store.Add(string.Concat(eventLogName, " log counts"));
+                Line.Store.Add(string.Concat("  Critical\t", criticalCount.ToString()));
+                Line.Store.Add(string.Concat("  Error   \t", errorCount.ToString()));
+                Line.Store.Add(string.Concat("  Warning \t", warningCount.ToString()));
+                Line.Store.Add(string.Concat("  Information\t", informationCount.ToString()));
+                Line.Store.Add(string.Concat("  Unknown  \t", eventLogEntriesHs.Count - (criticalCount + errorCount + warningCount + informationCount)));
             }
 
             if (eventLogName.Equals("Security"))
@@ -67,10 +67,10 @@ namespace EventLogSend.Method
                         }
                     }
                 }
-                Console.WriteLine(string.Concat(eventLogName, " log counts"));
-                Console.WriteLine(string.Concat("  AuditFailure\t", auditFailureCount.ToString()));
-                Console.WriteLine(string.Concat("  AuditSuccess\t", auditSuccessCount.ToString()));
-                Console.WriteLine(string.Concat("  Missed  \t", eventLogEntriesHs.Count - (auditFailureCount + auditSuccessCount)));
+                Line.Store.Add(string.Concat(eventLogName, " log counts"));
+                Line.Store.Add(string.Concat("  AuditFailure\t", auditFailureCount.ToString()));
+                Line.Store.Add(string.Concat("  AuditSuccess\t", auditSuccessCount.ToString()));
+                Line.Store.Add(string.Concat("  Unknown  \t", eventLogEntriesHs.Count - (auditFailureCount + auditSuccessCount)));
             }
         }
     }

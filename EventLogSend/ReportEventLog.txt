@@ -1,0 +1,91 @@
+Log count: 9
+Log: Application
+Log: HardwareEvents
+Log: Internet Explorer
+Log: Key Management Service
+Log: OAlerts
+Log: Security
+Log: System
+Log: Visual Studio
+Log: Windows PowerShell
+
+Application:
+  Log name =            Application
+  Log entry count =     5664
+  Log file path =       C:\windows\system32\winevt\Logs\Application.evtx
+  Current size =        3140 kilobytes
+  Maximum size =        20480 kilobytes
+  Overflow setting =    OverwriteAsNeeded
+  Oldest entries are overwritten when the log reaches the size limit.
+
+Hardware Events:
+  Log name =            HardwareEvents
+  Log entry count =     0
+  Log file path =       C:\windows\system32\winevt\logs\HardwareEvents.evtx
+  Current size =        68 kilobytes
+  Maximum size =        20480 kilobytes
+  Overflow setting =    OverwriteAsNeeded
+  Oldest entries are overwritten when the log reaches the size limit.
+
+Internet Explorer:
+  Log name =            Internet Explorer
+  Log entry count =     0
+  Log file path =       <not set>
+  Current size =        0 kilobytes
+  Maximum size =        512 kilobytes
+  Overflow setting =    OverwriteOlder
+  Entries are retained for at least 7 days.
+
+Key Management Service:
+  Log name =            Key Management Service
+  Log entry count =     0
+  Log file path =       <not set>
+  Current size =        0 kilobytes
+  Maximum size =        20480 kilobytes
+  Overflow setting =    OverwriteAsNeeded
+  Oldest entries are overwritten when the log reaches the size limit.
+
+Microsoft Office Alerts:
+  Log name =            OAlerts
+  Log entry count =     1
+  Log file path =       <not set>
+  Current size =        0 kilobytes
+  Maximum size =        128 kilobytes
+  Overflow setting =    OverwriteAsNeeded
+  Oldest entries are overwritten when the log reaches the size limit.
+
+Security:
+  Log name =            Security
+  Log entry count =     30613
+  Log file path =       C:\windows\System32\winevt\Logs\Security.evtx
+  Current size =        20484 kilobytes
+  Maximum size =        20480 kilobytes
+  Overflow setting =    OverwriteAsNeeded
+  Oldest entries are overwritten when the log reaches the size limit.
+
+System:
+  Log name =            System
+  Log entry count =     5601
+  Log file path =       C:\windows\system32\winevt\Logs\System.evtx
+  Current size =        3140 kilobytes
+  Maximum size =        20480 kilobytes
+  Overflow setting =    OverwriteAsNeeded
+  Oldest entries are overwritten when the log reaches the size limit.
+
+Visual Studio:
+  Log name =            Visual Studio
+  Log entry count =     10
+  Log file path =       <not set>
+  Current size =        0 kilobytes
+  Maximum size =        512 kilobytes
+  Overflow setting =    OverwriteOlder
+  Entries are retained for at least 7 days.
+
+Windows PowerShell:
+  Log name =            Windows PowerShell
+  Log entry count =     112
+  Log file path =       <not set>
+  Current size =        0 kilobytes
+  Maximum size =        15360 kilobytes
+  Overflow setting =    OverwriteAsNeeded
+  Oldest entries are overwritten when the log reaches the size limit.
