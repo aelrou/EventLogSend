@@ -1,13 +1,5 @@
-﻿using Microsoft.VisualBasic;
-using System.Diagnostics;
-using System.DirectoryServices.ActiveDirectory;
-using System.Drawing;
-using System.IO.Packaging;
-using System.Net;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Web.Services.Description;
-using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 //using System.Management.Automation;
 //using System.Management.Automation.Runspaces;
