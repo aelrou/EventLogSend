@@ -398,27 +398,28 @@ namespace EventLogSend.Method
                                         if (groups.Count == 22)
                                         {
                                             //string zero = groups[0].Value;
-                                            string SecurityID = groups[1].Value;
-                                            string AccountName = groups[2].Value;
-                                            string AccountDomain = groups[3].Value;
-                                            string LogonID = groups[4].Value;
-                                            string LogonType = groups[5].Value;
-                                            string SecurityID2 = groups[6].Value;
-                                            string AccountName2 = groups[7].Value;
-                                            string AccountDomain2 = groups[8].Value;
-                                            string FailureReason = groups[9].Value;
-                                            string Status = groups[10].Value;
-                                            string SubStatus = groups[11].Value;
-                                            string CallerProcessID = groups[12].Value;
-                                            string CallerProcessName = groups[13].Value;
+                                            //string SecurityID = groups[1].Value;
+                                            //string AccountName = groups[2].Value;
+                                            //string AccountDomain = groups[3].Value;
+                                            //string LogonID = groups[4].Value;
+                                            //string LogonType = groups[5].Value;
+                                            //string SecurityID2 = groups[6].Value;
+                                            string AccountName = groups[7].Value;
+                                            //string AccountDomain = groups[8].Value;
+                                            //string FailureReason = groups[9].Value;
+                                            //string Status = groups[10].Value;
+                                            //string SubStatus = groups[11].Value;
+                                            //string CallerProcessID = groups[12].Value;
+                                            //string CallerProcessName = groups[13].Value;
                                             string WorkstationName = groups[14].Value;
                                             string SourceNetworkAddress = groups[15].Value;
-                                            string SourcePort = groups[16].Value;
-                                            string LogonProcess = groups[17].Value;
-                                            string AuthenticationPackage = groups[18].Value;
-                                            string TransitedServices = groups[19].Value;
-                                            string PackageName = groups[20].Value;
-                                            string KeyLength = groups[21].Value;
+                                            //string SourcePort = groups[16].Value;
+                                            //string LogonProcess = groups[17].Value;
+                                            //string AuthenticationPackage = groups[18].Value;
+                                            //string TransitedServices = groups[19].Value;
+                                            //string PackageName = groups[20].Value;
+                                            //string KeyLength = groups[21].Value;
+                                            Line.Store.Add(string.Concat(eventLogEntry.EntryType, " for user ", WorkstationName, @"\", AccountName, " to machine ", Environment.MachineName, " from ", SourceNetworkAddress, " at ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)));
                                         }
                                         else
                                         {

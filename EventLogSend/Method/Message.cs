@@ -13,13 +13,16 @@
             message = message.Replace((char)10, (char)32); // Remove line feeds
             message = message.Replace((char)13, (char)32); // Remove carriage returns
             message = message.Replace((char)160, (char)32); // Remove non-breaking spaces
-            message = message.Replace("        ", " ");
-            message = message.Replace("       ", " ");
-            message = message.Replace("      ", " ");
-            message = message.Replace("     ", " ");
-            message = message.Replace("    ", " ");
-            message = message.Replace("   ", " ");
-            message = message.Replace("  ", " ");
+            while (true)
+            {
+                // Collapse consecutive spaces
+                message = message.Replace("  ", " ");
+                int index = message.IndexOf("  "); 
+                if (index == -1)
+                {
+                    break;
+                }
+            }
             message = message.Replace(" , ", ", ");
             message = message[..Math.Min(keep, message.Length)];
             return message;
