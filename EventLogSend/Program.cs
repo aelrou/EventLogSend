@@ -25,6 +25,8 @@ namespace EventLogSend
             //    Console.WriteLine(string.Concat("Log: ", log.Log));
             //}
 
+            //Environment.Exit(0);
+
             ReportEventLog.Properties();
 
             if (Directory.Exists(Constants.WorkDir))

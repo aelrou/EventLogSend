@@ -67,6 +67,7 @@ namespace EventLogSend.Method
                         }
                     }
                 }
+                Line.Store.Add("");
                 Line.Store.Add(string.Concat(eventLogName, " log counts"));
                 Line.Store.Add(string.Concat("  AuditFailure\t", auditFailureCount.ToString()));
                 Line.Store.Add(string.Concat("  AuditSuccess\t", auditSuccessCount.ToString()));
