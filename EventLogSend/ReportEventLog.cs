@@ -5,7 +5,7 @@ namespace EventLogSend
 {
     static class ReportEventLog
     {
-        internal static void Properties()
+        internal static void Properties(EventLog[] eventLogs)
         {
             //HashSet<EventLog> eventLogsHs = new HashSet<EventLog>();
             //HashSet<EventLogEntry> applicationLogEntriesHs = new HashSet<EventLogEntry>();
@@ -13,7 +13,6 @@ namespace EventLogSend
             //HashSet<EventLogEntry> systemLogEntriesHs = new HashSet<EventLogEntry>();
 
             //EventLog[] eventLogs = EventLog.GetEventLogs();
-            EventLog[] eventLogs = EventLog.GetEventLogs();
             Console.WriteLine("Processing EventLog");
             //Console.WriteLine("Populating HashSet<EventLog>");
             //eventLogsHs = eventLogs.ToHashSet();
@@ -71,7 +70,6 @@ namespace EventLogSend
 
             //StatisticsCopy.Report(eventLogs, Value.OldestDate[0]);
             //SourcesCopy.Report("Microsoft-Windows-WHEA-Logger", eventLogs, Value.OldestDate[0]);
-            TypesCopy.Report(eventLogs);
         }
     }
 }

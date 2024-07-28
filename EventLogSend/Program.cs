@@ -11,9 +11,11 @@ namespace EventLogSend
 
             EventLog[] eventLogs = EventLog.GetEventLogs();
 
-            SecurityAuditLog.Report(eventLogs);
+            ReportEventLog.Properties(eventLogs);
 
-            //ReportEventLog.Properties();
+            TypesCopy.Report(eventLogs);
+
+            SecurityAuditLog.Report(eventLogs);
 
             Log.Write(Value.Log);
         }
