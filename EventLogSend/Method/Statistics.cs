@@ -2,9 +2,9 @@
 
 namespace EventLogSend.Method
 {
-    public static class Statistics
+    static class Statistics
     {
-        public static void Report(string eventLogName, HashSet<EventLogEntry> eventLogEntriesHs, DateTime dateTime)
+        internal static void Report(string eventLogName, HashSet<EventLogEntry> eventLogEntriesHs)
         {
 
             int criticalCount = 0;
@@ -18,7 +18,7 @@ namespace EventLogSend.Method
             {
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         switch (eventLogEntry.EntryType.ToString())
                         {
@@ -52,7 +52,7 @@ namespace EventLogSend.Method
             {
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         switch (eventLogEntry.EntryType.ToString())
                         {

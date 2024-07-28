@@ -1,10 +1,11 @@
 ﻿using System.Diagnostics;
+using EventLogSend.Method;
 
 namespace EventLogSend
 {
-    public static class ReportEventLog
+    static class ReportEventLog
     {
-        public static void Properties()
+        internal static void Properties()
         {
             //HashSet<EventLog> eventLogsHs = new HashSet<EventLog>();
             //HashSet<EventLogEntry> applicationLogEntriesHs = new HashSet<EventLogEntry>();
@@ -45,34 +46,32 @@ namespace EventLogSend
             //    }
             //}
 
-            DateTime dateTime = DateTime.UtcNow.AddYears(-1);
             Value.Log.Add(string.Concat("MachineName ", Environment.MachineName));
-            Value.Log.Add(string.Concat("    OS Name ", Method.OperatingSystem.FriendlyName()));
+            Value.Log.Add(string.Concat("    OS Name ", RegistryOs.FriendlyName()));
             Value.Log.Add(string.Concat(" OS Version ", Environment.OSVersion));
             Value.Log.Add("");
-            Value.Log.Add(string.Concat("EventLog entries newer than ", dateTime.ToString(Value.DateFormat)));
+            Value.Log.Add(string.Concat("EventLog entries newer than ", Value.OldestDate[0].ToString(Value.DateFormat)));
 
-            //Method.Statistics.Report("System", systemLogEntriesHs, dateTime);
+            //Statistics.Report("System", systemLogEntriesHs, Value.OldestDate[0]);
             //Value.Log.Add("");
-            //Method.Sources.Report("System", "Microsoft-Windows-WHEA-Logger", systemLogEntriesHs, dateTime);
+            //Sources.Report("System", "Microsoft-Windows-WHEA-Logger", systemLogEntriesHs, Value.OldestDate[0]);
             //Value.Log.Add("");
-            //Method.Types.Report("System", systemLogEntriesHs, dateTime);
-            //Value.Log.Add("");
-
-            //Method.Statistics.Report("Application", applicationLogEntriesHs, dateTime);
-            //Value.Log.Add("");
-            //Method.Types.Report("Application", applicationLogEntriesHs, dateTime);
+            //Types.Report("System", systemLogEntriesHs, Value.OldestDate[0]);
             //Value.Log.Add("");
 
-            //Method.Statistics.Report("Security", securityLogEntriesHs, dateTime);
+            //Statistics.Report("Application", applicationLogEntriesHs, Value.OldestDate[0]);
             //Value.Log.Add("");
-            //Method.Types.Report("Security", securityLogEntriesHs, dateTime);
+            //Types.Report("Application", applicationLogEntriesHs, Value.OldestDate[0]);
             //Value.Log.Add("");
 
-            //Method.StatisticsCopy.Report(eventLogs, dateTime);
-            //Method.SourcesCopy.Report("Microsoft-Windows-WHEA-Logger", eventLogs, dateTime);
-            Method.TypesCopy.Report(eventLogs, dateTime);
-            
+            //Statistics.Report("Security", securityLogEntriesHs, Value.OldestDate[0]);
+            //Value.Log.Add("");
+            //Types.Report("Security", securityLogEntriesHs, Value.OldestDate[0]);
+            //Value.Log.Add("");
+
+            //StatisticsCopy.Report(eventLogs, Value.OldestDate[0]);
+            //SourcesCopy.Report("Microsoft-Windows-WHEA-Logger", eventLogs, Value.OldestDate[0]);
+            TypesCopy.Report(eventLogs);
         }
     }
 }

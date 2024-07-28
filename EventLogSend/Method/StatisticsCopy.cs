@@ -2,9 +2,9 @@
 
 namespace EventLogSend.Method
 {
-    public static class StatisticsCopy
+    static class StatisticsCopy
     {
-        public static void Report(EventLog[] eventLogs, DateTime dateTime)
+        internal static void Report(EventLog[] eventLogs)
         {
             foreach (EventLog eventLog in eventLogs)
             {
@@ -17,7 +17,7 @@ namespace EventLogSend.Method
                 {
                     foreach (EventLogEntry eventLogEntry in eventLog.Entries)
                     {
-                        if (eventLogEntry.TimeWritten >= dateTime)
+                        if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                         {
                             switch (eventLogEntry.EntryType.ToString())
                             {
@@ -59,7 +59,7 @@ namespace EventLogSend.Method
                 {
                     foreach (EventLogEntry eventLogEntry in eventLog.Entries)
                     {
-                        if (eventLogEntry.TimeWritten >= dateTime)
+                        if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                         {
                             switch (eventLogEntry.EntryType.ToString())
                             {
@@ -99,7 +99,7 @@ namespace EventLogSend.Method
                 {
                     foreach (EventLogEntry eventLogEntry in eventLog.Entries)
                     {
-                        if (eventLogEntry.TimeWritten >= dateTime)
+                        if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                         {
                             switch (eventLogEntry.EntryType.ToString())
                             {

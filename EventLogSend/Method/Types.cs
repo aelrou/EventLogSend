@@ -2,9 +2,9 @@
 
 namespace EventLogSend.Method
 {
-    public static class Types
+    static class Types
     {
-        public static void Report(string eventLogName, HashSet<EventLogEntry> eventLogEntriesHs, DateTime dateTime)
+        internal static void Report(string eventLogName, HashSet<EventLogEntry> eventLogEntriesHs)
         {
             if (eventLogName.Equals("Application") | eventLogName.Equals("System"))
             {
@@ -12,7 +12,7 @@ namespace EventLogSend.Method
                 Value.Log.Add("---- Critical ----");
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("0"))
                         {
@@ -29,7 +29,7 @@ namespace EventLogSend.Method
                                 ", ", Message.Filter(eventLogEntry.Message, 1000),
                                 ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                 //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                 //", UserName ", eventLogEntry.UserName
                             );
                             Value.Log.Add(line);
@@ -41,7 +41,7 @@ namespace EventLogSend.Method
                 Value.Log.Add("---- Error ----");
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("Error"))
                         {
@@ -86,7 +86,7 @@ namespace EventLogSend.Method
                                     ", ", Message.Filter(eventLogEntry.Message, 1000),
                                     ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                 );
                                 Value.Log.Add(line);
@@ -99,7 +99,7 @@ namespace EventLogSend.Method
                 Value.Log.Add("---- Warning ----");
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("Warning"))
                         {
@@ -136,7 +136,7 @@ namespace EventLogSend.Method
                                     ", ", Message.Filter(eventLogEntry.Message, 1000),
                                     ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                 );
                                 Value.Log.Add(line);
@@ -152,7 +152,7 @@ namespace EventLogSend.Method
                 Value.Log.Add("---- FailureAudit ----");
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("FailureAudit"))
                         {
@@ -177,7 +177,7 @@ namespace EventLogSend.Method
                                     ", ", Message.Filter(eventLogEntry.Message, 1000),
                                     ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                 );
                                 Value.Log.Add(line);

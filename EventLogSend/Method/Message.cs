@@ -1,8 +1,8 @@
 ﻿namespace EventLogSend.Method
 {
-    public static class Message
+    static class Message
     {
-        public static string Filter(string message, int keep)
+        internal static string Filter(string message, int keep)
         {
             if (message.Contains("The description for Event ID"))
             {

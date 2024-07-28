@@ -2,9 +2,9 @@
 
 namespace EventLogSend.Method
 {
-    public static class Sources
+    static class Sources
     {
-        public static void Report(string eventLogName, string sourceName, HashSet<EventLogEntry> eventLogEntriesHs, DateTime dateTime)
+        internal static void Report(string eventLogName, string sourceName, HashSet<EventLogEntry> eventLogEntriesHs)
         {
             if (eventLogName.Equals("System"))
             {
@@ -12,7 +12,7 @@ namespace EventLogSend.Method
                 Value.Log.Add(string.Concat("---- Critical, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("0") & eventLogEntry.Source.ToString().Equals(sourceName))
                         {
@@ -29,7 +29,7 @@ namespace EventLogSend.Method
                                 ", ", Message.Filter(eventLogEntry.Message, 1000),
                                 ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                 //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                 //", UserName ", eventLogEntry.UserName
                             );
                             Value.Log.Add(line);
@@ -41,7 +41,7 @@ namespace EventLogSend.Method
                 Value.Log.Add(string.Concat("---- Error, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("Error") & eventLogEntry.Source.ToString().Equals(sourceName))
                         {
@@ -66,7 +66,7 @@ namespace EventLogSend.Method
                                     Message.Filter(eventLogEntry.Message, 1000),
                                     ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                 );
                                 Value.Log.Add(line);
@@ -79,7 +79,7 @@ namespace EventLogSend.Method
                 Value.Log.Add(string.Concat("---- Warning, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("Warning") & eventLogEntry.Source.ToString().Equals(sourceName))
                         {
@@ -104,7 +104,7 @@ namespace EventLogSend.Method
                                     Message.Filter(eventLogEntry.Message, 1000),
                                     ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                 );
                                 Value.Log.Add(line);
@@ -116,7 +116,7 @@ namespace EventLogSend.Method
                 Value.Log.Add(string.Concat("---- Information, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
-                    if (eventLogEntry.TimeWritten >= dateTime)
+                    if (eventLogEntry.TimeWritten >= Value.OldestDate[0])
                     {
                         if (eventLogEntry.EntryType.ToString().Equals("Information") & eventLogEntry.Source.ToString().Equals(sourceName))
                         {
@@ -141,7 +141,7 @@ namespace EventLogSend.Method
                                     Message.Filter(eventLogEntry.Message, 1000),
                                     ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                 //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
+                                //", TimeGenerated ", eventLogEntry.TimeWritten.ToString(Value.DateFormat),
                                 //", UserName ", eventLogEntry.UserName
                                 );
                                 Value.Log.Add(line);

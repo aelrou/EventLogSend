@@ -2,9 +2,9 @@
 
 namespace MyCSharpNamespace
 {
-    public static class MyEventLogEntryClass
+    static class MyEventLogEntryClass
     {
-        public static void MyEventLogEntryMethod()
+        internal static void MyEventLogEntryMethod()
         {
             DateTime dateTime = DateTime.UtcNow.AddYears(-1);
             EventLog[] eventLogs = EventLog.GetEventLogs();

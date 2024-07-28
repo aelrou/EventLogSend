@@ -1,11 +1,10 @@
-﻿
-namespace EventLogSend.Method
+﻿namespace EventLogSend.Method
 {
-    public static class Log
+    static class Log
     {
-        public static void Write(List<string> contents)
+        internal static void Write(List<string> contents)
         {
-            string logPath = string.Concat(Value.WorkDir, @"\", Value.LogFile);
+            string logPath = string.Concat(Value.WorkDir[0], @"\", Value.LogFile);
 
             foreach (string content in contents)
             {

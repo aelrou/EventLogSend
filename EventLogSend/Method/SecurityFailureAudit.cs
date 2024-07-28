@@ -2,9 +2,9 @@
 
 namespace EventLogSend.Method
 {
-    public static class SecurityFailureAudit
+    static class SecurityFailureAudit
     {
-        public static Dictionary<string, string> Parse(EventLogEntry entry)
+        internal static Dictionary<string, string> Parse(EventLogEntry entry)
         {
             Dictionary<string, string> messageData = new Dictionary<string, string>();
 

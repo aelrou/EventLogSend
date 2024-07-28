@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EventLogSend": {
+      "commandName": "Project",
+      "commandLineArgs": "999 \"C:\\Users\\Public\\EventLogSend\""
+    }
+  }
+}

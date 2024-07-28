@@ -3,9 +3,9 @@ using System.Diagnostics;
 
 namespace EventLogSend
 {
-    public static class ReportEventLogTry
+    static class ReportEventLogTry
     {
-        public static void Properties()
+        internal static void Properties()
         {
             // Iterate through event logs and display properties for each
             EventLog[] eventLogs = EventLog.GetEventLogs();
