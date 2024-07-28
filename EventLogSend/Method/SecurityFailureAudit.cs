@@ -4,7 +4,7 @@ namespace EventLogSend.Method
 {
     public static class SecurityFailureAudit
     {
-        public static Dictionary<string, string> ParseDictionary(EventLogEntry entry)
+        public static Dictionary<string, string> Parse(EventLogEntry entry)
         {
             Dictionary<string, string> messageData = new Dictionary<string, string>();
 
@@ -12,7 +12,7 @@ namespace EventLogSend.Method
             if (entry.Source.Equals("Microsoft-Windows-Security-Auditing"))
             {
                 // Check entry type is "FailureAudit"
-                if (entry.EntryType == EventLogEntryType.FailureAudit)
+                if (entry.EntryType.Equals(EventLogEntryType.FailureAudit))
                 {
                     // Check entry detail is "4625 An account failed to log on."
                     if (entry.InstanceId.Equals(4625))

@@ -4,7 +4,7 @@ namespace EventLogSend.Method
 {
     public static class SecuritySuccessAudit
     {
-        public static Dictionary<string, string> ParseDictionary(EventLogEntry entry)
+        public static Dictionary<string, string> Parse(EventLogEntry entry)
         {
             Dictionary<string, string> messageData = new Dictionary<string, string>();
 
@@ -12,7 +12,7 @@ namespace EventLogSend.Method
             if (entry.Source.Equals("Microsoft-Windows-Security-Auditing"))
             {
                 // Check entry type is "SuccessAudit"
-                if (entry.EntryType == EventLogEntryType.SuccessAudit)
+                if (entry.EntryType.Equals(EventLogEntryType.SuccessAudit))
                 {
                     // Check entry detail is "4624 An account was successfully logged on."
                     if (entry.InstanceId.Equals(4624))
