@@ -46,28 +46,28 @@ namespace EventLogSend
             //}
 
             DateTime dateTime = DateTime.UtcNow.AddYears(-1);
-            Line.Store.Add(string.Concat("MachineName ", Environment.MachineName));
-            Line.Store.Add(string.Concat("    OS Name ", Method.OperatingSystem.FriendlyName()));
-            Line.Store.Add(string.Concat(" OS Version ", Environment.OSVersion));
-            Line.Store.Add("");
-            Line.Store.Add(string.Concat("EventLog entries newer than ", dateTime.ToString(Constants.DateFormat)));
+            Value.Log.Add(string.Concat("MachineName ", Environment.MachineName));
+            Value.Log.Add(string.Concat("    OS Name ", Method.OperatingSystem.FriendlyName()));
+            Value.Log.Add(string.Concat(" OS Version ", Environment.OSVersion));
+            Value.Log.Add("");
+            Value.Log.Add(string.Concat("EventLog entries newer than ", dateTime.ToString(Value.DateFormat)));
 
             //Method.Statistics.Report("System", systemLogEntriesHs, dateTime);
-            //Line.Store.Add("");
+            //Value.Log.Add("");
             //Method.Sources.Report("System", "Microsoft-Windows-WHEA-Logger", systemLogEntriesHs, dateTime);
-            //Line.Store.Add("");
+            //Value.Log.Add("");
             //Method.Types.Report("System", systemLogEntriesHs, dateTime);
-            //Line.Store.Add("");
+            //Value.Log.Add("");
 
             //Method.Statistics.Report("Application", applicationLogEntriesHs, dateTime);
-            //Line.Store.Add("");
+            //Value.Log.Add("");
             //Method.Types.Report("Application", applicationLogEntriesHs, dateTime);
-            //Line.Store.Add("");
+            //Value.Log.Add("");
 
             //Method.Statistics.Report("Security", securityLogEntriesHs, dateTime);
-            //Line.Store.Add("");
+            //Value.Log.Add("");
             //Method.Types.Report("Security", securityLogEntriesHs, dateTime);
-            //Line.Store.Add("");
+            //Value.Log.Add("");
 
             //Method.StatisticsCopy.Report(eventLogs, dateTime);
             //Method.SourcesCopy.Report("Microsoft-Windows-WHEA-Logger", eventLogs, dateTime);

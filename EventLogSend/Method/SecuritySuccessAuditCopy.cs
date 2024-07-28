@@ -2,9 +2,9 @@
 
 namespace EventLogSend.Method
 {
-    public static class SecuritySuccessAudit
+    public static class SecuritySuccessAuditCopy
     {
-        public static Dictionary<string, string> ParseDictionary(EventLogEntry entry)
+        public static Dictionary<string, string> Parse(EventLogEntry entry)
         {
             Dictionary<string, string> messageData = new Dictionary<string, string>();
 
@@ -84,202 +84,202 @@ namespace EventLogSend.Method
                         //foreach (string line in networkSet) { Console.WriteLine(line); }
                         //foreach (string line in authSet) { Console.WriteLine(line); }
 
-                        //Dictionary<string, string> subjectData = new Dictionary<string, string>();
+                        Dictionary<string, string> subjectData = new Dictionary<string, string>();
                         foreach (string line in subjectSet)
                         {
                             string section = @"Subject:";
                             string key = @"Security ID:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                subjectData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Account Name:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                subjectData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Account Domain:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                subjectData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Logon ID:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                subjectData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
                         }
 
-                        //Dictionary<string, string> loginInfoData = new Dictionary<string, string>();
+                        Dictionary<string, string> loginInfoData = new Dictionary<string, string>();
                         foreach (string line in loginInfoSet)
                         {
                             string section = @"Logon Information:";
                             string key = @"Logon Type:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                loginInfoData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Restricted Admin Mode:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                loginInfoData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Remote Credential Guard:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                loginInfoData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Virtual Account:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                loginInfoData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Elevated Token:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                loginInfoData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Impersonation Level:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                loginInfoData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                         }
 
-                        //Dictionary<string, string> newLogonData = new Dictionary<string, string>();
+                        Dictionary<string, string> newLogonData = new Dictionary<string, string>();
                         foreach (string line in newLogonSet)
                         {
                             string section = @"New Logon:";
                             string key = @"Security ID:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Account Name:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Account Domain:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Logon ID:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Linked Logon ID:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Network Account Name:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Network Account Domain:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Logon GUID:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                newLogonData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
                         }
 
-                        //Dictionary<string, string> processData = new Dictionary<string, string>();
+                        Dictionary<string, string> processData = new Dictionary<string, string>();
                         foreach (string line in processSet)
                         {
                             string section = @"Process Information:";
                             string key = @"Process ID:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                processData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Process Name:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                processData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
                         }
 
-                        //Dictionary<string, string> networkData = new Dictionary<string, string>();
+                        Dictionary<string, string> networkData = new Dictionary<string, string>();
                         foreach (string line in networkSet)
                         {
                             string section = @"Network Information:";
                             string key = @"Workstation Name:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                networkData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Source Network Address:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                networkData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Source Port:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                networkData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
                         }
 
-                        //Dictionary<string, string> authData = new Dictionary<string, string>();
+                        Dictionary<string, string> authData = new Dictionary<string, string>();
                         foreach (string line in authSet)
                         {
                             string section = @"Detailed Authentication Information:";
                             string key = @"Logon Process:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                authData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Authentication Package:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                authData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Transited Services:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                authData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Package Name (NTLM only):";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                authData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
 
                             key = @"Key Length:";
                             if (LineKeyCheck(key, line))
                             {
-                                messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
+                                authData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
                         }
 
@@ -290,7 +290,7 @@ namespace EventLogSend.Method
                         //foreach (var pair in processData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
                         //foreach (var pair in networkData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
                         //foreach (var pair in authData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
-
+                        
                         //messageData.Add(subjectData);
                         //messageData.Add(loginInfoData);
                         //messageData.Add(newLogonData);
@@ -316,7 +316,7 @@ namespace EventLogSend.Method
             string value = "";
             if (position != -1)
             {
-                value = line.Substring(position + key.Length);
+                value = line.Substring(key.Length + position);
             }
             return value.Trim();
         }

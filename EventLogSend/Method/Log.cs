@@ -5,7 +5,7 @@ namespace EventLogSend.Method
     {
         public static void Write(List<string> contents)
         {
-            string logPath = string.Concat(Constants.WorkDir, "\\", Constants.OutputFile);
+            string logPath = string.Concat(Value.WorkDir, @"\", Value.LogFile);
 
             foreach (string content in contents)
             {

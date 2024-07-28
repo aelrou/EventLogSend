@@ -17,7 +17,7 @@ namespace EventLogSend
                 ulong? logSize = null;
 
                 // Get event log file if there is one
-                regEventLog = Registry.LocalMachine.OpenSubKey(string.Concat("System\\CurrentControlSet\\Services\\EventLog\\", e.Log));
+                regEventLog = Registry.LocalMachine.OpenSubKey(string.Concat(@"System\CurrentControlSet\Services\EventLog\", e.Log));
                 if (regEventLog != null)
                 {
                     logPath = regEventLog.GetValue("File");

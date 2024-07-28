@@ -15,8 +15,8 @@ namespace EventLogSend.Method
             //{
             //    if (eventLog.Log.Equals("System"))
             //    {
-            //        Line.Store.Add("");
-            //        Line.Store.Add(string.Concat("---- Critical, ", eventLog.Log, " ----"));
+            //        Value.Log.Add("");
+            //        Value.Log.Add(string.Concat("---- Critical, ", eventLog.Log, " ----"));
             //        foreach (EventLogEntry eventLogEntry in eventLog.Entries)
             //        {
             //            if (eventLogEntry.TimeWritten >= dateTime)
@@ -34,18 +34,18 @@ namespace EventLogSend.Method
             //                        //", Index ", eventLogEntry.Index
             //                        //", MachineName ", eventLogEntry.MachineName,
             //                        ", ", Message.Filter(eventLogEntry.Message, 1000),
-            //                        ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+            //                        ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
             //                    //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-            //                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+            //                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
             //                    //", UserName ", eventLogEntry.UserName
             //                    );
-            //                    Line.Store.Add(line);
+            //                    Value.Log.Add(line);
             //                }
             //            }
             //        }
 
-            //        Line.Store.Add("");
-            //        Line.Store.Add(string.Concat("---- Error, ", eventLog.Log, " ----"));
+            //        Value.Log.Add("");
+            //        Value.Log.Add(string.Concat("---- Error, ", eventLog.Log, " ----"));
             //        foreach (EventLogEntry eventLogEntry in eventLog.Entries)
             //        {
             //            if (eventLogEntry.TimeWritten >= dateTime)
@@ -91,19 +91,19 @@ namespace EventLogSend.Method
             //                            //", Index ", eventLogEntry.Index
             //                            //", MachineName ", eventLogEntry.MachineName,
             //                            ", ", Message.Filter(eventLogEntry.Message, 1000),
-            //                            ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+            //                            ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
             //                        //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
             //                        //", UserName ", eventLogEntry.UserName
             //                        );
-            //                        Line.Store.Add(line);
+            //                        Value.Log.Add(line);
             //                    }
             //                }
             //            }
             //        }
 
-            //        Line.Store.Add("");
-            //        Line.Store.Add(string.Concat("---- Warning, ", eventLog.Log, " ----"));
+            //        Value.Log.Add("");
+            //        Value.Log.Add(string.Concat("---- Warning, ", eventLog.Log, " ----"));
             //        foreach (EventLogEntry eventLogEntry in eventLog.Entries)
             //        {
             //            if (eventLogEntry.TimeWritten >= dateTime)
@@ -141,12 +141,12 @@ namespace EventLogSend.Method
             //                            //", Index ", eventLogEntry.Index
             //                            //", MachineName ", eventLogEntry.MachineName,
             //                            ", ", Message.Filter(eventLogEntry.Message, 1000),
-            //                            ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+            //                            ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
             //                        //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
             //                        //", UserName ", eventLogEntry.UserName
             //                        );
-            //                        Line.Store.Add(line);
+            //                        Value.Log.Add(line);
             //                    }
             //                }
             //            }
@@ -158,8 +158,8 @@ namespace EventLogSend.Method
             //{
             //    if (eventLog.Log.Equals("Application"))
             //    {
-            //        Line.Store.Add("");
-            //        Line.Store.Add(string.Concat("---- Critical, ", eventLog.Log, " ----"));
+            //        Value.Log.Add("");
+            //        Value.Log.Add(string.Concat("---- Critical, ", eventLog.Log, " ----"));
             //        foreach (EventLogEntry eventLogEntry in eventLog.Entries)
             //        {
             //            if (eventLogEntry.TimeWritten >= dateTime)
@@ -177,18 +177,18 @@ namespace EventLogSend.Method
             //                        //", Index ", eventLogEntry.Index
             //                        //", MachineName ", eventLogEntry.MachineName,
             //                        ", ", Message.Filter(eventLogEntry.Message, 1000),
-            //                        ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+            //                        ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
             //                    //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-            //                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+            //                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
             //                    //", UserName ", eventLogEntry.UserName
             //                    );
-            //                    Line.Store.Add(line);
+            //                    Value.Log.Add(line);
             //                }
             //            }
             //        }
 
-            //        Line.Store.Add("");
-            //        Line.Store.Add(string.Concat("---- Error ", eventLog.Log, " ----"));
+            //        Value.Log.Add("");
+            //        Value.Log.Add(string.Concat("---- Error ", eventLog.Log, " ----"));
             //        foreach (EventLogEntry eventLogEntry in eventLog.Entries)
             //        {
             //            if (eventLogEntry.TimeWritten >= dateTime)
@@ -234,19 +234,19 @@ namespace EventLogSend.Method
             //                            //", Index ", eventLogEntry.Index
             //                            //", MachineName ", eventLogEntry.MachineName,
             //                            ", ", Message.Filter(eventLogEntry.Message, 1000),
-            //                            ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+            //                            ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
             //                        //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
             //                        //", UserName ", eventLogEntry.UserName
             //                        );
-            //                        Line.Store.Add(line);
+            //                        Value.Log.Add(line);
             //                    }
             //                }
             //            }
             //        }
 
-            //        Line.Store.Add("");
-            //        Line.Store.Add(string.Concat("---- Warning, ", eventLog.Log, " ----"));
+            //        Value.Log.Add("");
+            //        Value.Log.Add(string.Concat("---- Warning, ", eventLog.Log, " ----"));
             //        foreach (EventLogEntry eventLogEntry in eventLog.Entries)
             //        {
             //            if (eventLogEntry.TimeWritten >= dateTime)
@@ -284,19 +284,18 @@ namespace EventLogSend.Method
             //                            //", Index ", eventLogEntry.Index
             //                            //", MachineName ", eventLogEntry.MachineName,
             //                            ", ", Message.Filter(eventLogEntry.Message, 1000),
-            //                            ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+            //                            ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
             //                        //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+            //                        //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
             //                        //", UserName ", eventLogEntry.UserName
             //                        );
-            //                        Line.Store.Add(line);
+            //                        Value.Log.Add(line);
             //                    }
             //                }
             //            }
             //        }
             //    }
             //}
-
 
 
             string pattern = @".*(?:An account failed to log on\.).*(?:Subject\:).*?(?:Security ID\:)(.*)?(?:Account Name\:)(.*)?(?:Account Domain\:)(.*)?(?:Logon ID\:)(.*)?(?:Logon Type\:)(.*)(?:Account For Which Logon Failed\:).*?(?:Security ID\:)(.*)?(?:Account Name\:)(.*)?(?:Account Domain\:)(.*)(?:Failure Information\:).*?(?:Failure Reason\:)(.*)?(?:Status\:)(.*)?(?:Sub Status\:)(.*)(?:Process Information\:).*?(?:Caller Process ID\:)(.*)?(?:Caller Process Name\:)(.*)(?:Network Information\:).*?(?:Workstation Name\:)(.*)?(?:Source Network Address\:)(.*)?(?:Source Port\:)(.*)(?:Detailed Authentication Information\:).*?(?:Logon Process\:)(.*)?(?:Authentication Package\:)(.*)?(?:Transited Services\:)(.*)?(?:Package Name \(NTLM only\)\:)(.*)?(?:Key Length\:)(.*)";
@@ -335,8 +334,8 @@ namespace EventLogSend.Method
             {
                 if (eventLog.Log.Equals("Security"))
                 {
-                    Line.Store.Add("");
-                    Line.Store.Add(string.Concat("---- FailureAudit, ", eventLog.Log, " ----"));
+                    Value.Log.Add("");
+                    Value.Log.Add(string.Concat("---- FailureAudit, ", eventLog.Log, " ----"));
                     foreach (EventLogEntry eventLogEntry in eventLog.Entries)
                     {
                         if (eventLogEntry.TimeWritten >= dateTime)
@@ -359,11 +358,7 @@ namespace EventLogSend.Method
                                 {
                                     Console.WriteLine("Nothing in EventLogEntry.Data");
                                 }
-
-
-
-
-
+                                
 
                                 bool send = true;
                                 //if (eventLogEntry.Source.ToString().Equals("Microsoft-Windows-GroupPolicy") & eventLogEntry.Message.ToString().Contains("processing of Group Policy failed"))
@@ -419,7 +414,7 @@ namespace EventLogSend.Method
                                             //string TransitedServices = groups[19].Value;
                                             //string PackageName = groups[20].Value;
                                             //string KeyLength = groups[21].Value;
-                                            Line.Store.Add(string.Concat(eventLogEntry.EntryType, " for user ", WorkstationName, @"\", AccountName, " to machine ", Environment.MachineName, " from ", SourceNetworkAddress, " at ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)));
+                                            Value.Log.Add(string.Concat(eventLogEntry.EntryType, " for user ", WorkstationName, @"\", AccountName, " to machine ", Environment.MachineName, " from ", SourceNetworkAddress, " at ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)));
                                         }
                                         else
                                         {
@@ -438,12 +433,12 @@ namespace EventLogSend.Method
                                         //", MachineName ", eventLogEntry.MachineName,
                                         //", ", eventLogEntry.Data.GetHashCode(),
                                         ", ", message,
-                                        ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+                                        ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                     );
-                                    Line.Store.Add(line);
+                                    Value.Log.Add(line);
                                 }
                             }
                         }

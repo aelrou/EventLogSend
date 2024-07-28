@@ -8,8 +8,8 @@ namespace EventLogSend.Method
         {
             if (eventLogName.Equals("System"))
             {
-                Line.Store.Add("");
-                Line.Store.Add(string.Concat("---- Critical, ", sourceName, " ----"));
+                Value.Log.Add("");
+                Value.Log.Add(string.Concat("---- Critical, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
                     if (eventLogEntry.TimeWritten >= dateTime)
@@ -27,18 +27,18 @@ namespace EventLogSend.Method
                                 //", Index ", eventLogEntry.Index
                                 //", MachineName ", eventLogEntry.MachineName,
                                 ", ", Message.Filter(eventLogEntry.Message, 1000),
-                                ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+                                ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                 //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+                                //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
                                 //", UserName ", eventLogEntry.UserName
                             );
-                            Line.Store.Add(line);
+                            Value.Log.Add(line);
                         }
                     }
                 }
 
-                Line.Store.Add("");
-                Line.Store.Add(string.Concat("---- Error, ", sourceName, " ----"));
+                Value.Log.Add("");
+                Value.Log.Add(string.Concat("---- Error, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
                     if (eventLogEntry.TimeWritten >= dateTime)
@@ -64,19 +64,19 @@ namespace EventLogSend.Method
                                     //", Index ", eventLogEntry.Index
                                     //", MachineName ", eventLogEntry.MachineName,
                                     Message.Filter(eventLogEntry.Message, 1000),
-                                    ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+                                    ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                 );
-                                Line.Store.Add(line);
+                                Value.Log.Add(line);
                             }
                         }
                     }
                 }
 
-                Line.Store.Add("");
-                Line.Store.Add(string.Concat("---- Warning, ", sourceName, " ----"));
+                Value.Log.Add("");
+                Value.Log.Add(string.Concat("---- Warning, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
                     if (eventLogEntry.TimeWritten >= dateTime)
@@ -102,18 +102,18 @@ namespace EventLogSend.Method
                                     //", Index ", eventLogEntry.Index
                                     //", MachineName ", eventLogEntry.MachineName,
                                     Message.Filter(eventLogEntry.Message, 1000),
-                                    ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+                                    ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                     //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+                                    //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
                                     //", UserName ", eventLogEntry.UserName
                                 );
-                                Line.Store.Add(line);
+                                Value.Log.Add(line);
                             }
                         }
                     }
                 }
-                Line.Store.Add("");
-                Line.Store.Add(string.Concat("---- Information, ", sourceName, " ----"));
+                Value.Log.Add("");
+                Value.Log.Add(string.Concat("---- Information, ", sourceName, " ----"));
                 foreach (EventLogEntry eventLogEntry in eventLogEntriesHs)
                 {
                     if (eventLogEntry.TimeWritten >= dateTime)
@@ -139,12 +139,12 @@ namespace EventLogSend.Method
                                     //", Index ", eventLogEntry.Index
                                     //", MachineName ", eventLogEntry.MachineName,
                                     Message.Filter(eventLogEntry.Message, 1000),
-                                    ", ", eventLogEntry.TimeWritten.ToString(Constants.DateFormat)
+                                    ", ", eventLogEntry.TimeWritten.ToString(Value.DateFormat)
                                 //" - ReplacementStrings ", eventLogEntry.ReplacementStrings,
-                                //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Constants.DateFormat),
+                                //", TimeGenerated ", eventLogEntry.TimeGenerated.ToString(Value.DateFormat),
                                 //", UserName ", eventLogEntry.UserName
                                 );
-                                Line.Store.Add(line);
+                                Value.Log.Add(line);
                             }
                         }
                     }

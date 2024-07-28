@@ -38,13 +38,13 @@ namespace EventLogSend.Method
                             }
                         }
                     }
-                    Line.Store.Add("");
-                    Line.Store.Add(string.Concat(eventLog.Log, " log counts"));
-                    Line.Store.Add(string.Concat("  Critical    ", criticalCount.ToString()));
-                    Line.Store.Add(string.Concat("  Error       ", errorCount.ToString()));
-                    Line.Store.Add(string.Concat("  Warning     ", warningCount.ToString()));
-                    Line.Store.Add(string.Concat("  Information ", informationCount.ToString()));
-                    Line.Store.Add(string.Concat("  Unknown     ", eventLog.Entries.Count - (criticalCount + errorCount + warningCount + informationCount)));
+                    Value.Log.Add("");
+                    Value.Log.Add(string.Concat(eventLog.Log, " log counts"));
+                    Value.Log.Add(string.Concat("  Critical    ", criticalCount.ToString()));
+                    Value.Log.Add(string.Concat("  Error       ", errorCount.ToString()));
+                    Value.Log.Add(string.Concat("  Warning     ", warningCount.ToString()));
+                    Value.Log.Add(string.Concat("  Information ", informationCount.ToString()));
+                    Value.Log.Add(string.Concat("  Unknown     ", eventLog.Entries.Count - (criticalCount + errorCount + warningCount + informationCount)));
                 }
             }
 
@@ -80,13 +80,13 @@ namespace EventLogSend.Method
                             }
                         }
                     }
-                    Line.Store.Add("");
-                    Line.Store.Add(string.Concat(eventLog.Log, " log counts"));
-                    Line.Store.Add(string.Concat("  Critical    ", criticalCount.ToString()));
-                    Line.Store.Add(string.Concat("  Error       ", errorCount.ToString()));
-                    Line.Store.Add(string.Concat("  Warning     ", warningCount.ToString()));
-                    Line.Store.Add(string.Concat("  Information ", informationCount.ToString()));
-                    Line.Store.Add(string.Concat("  Unknown     ", eventLog.Entries.Count - (criticalCount + errorCount + warningCount + informationCount)));
+                    Value.Log.Add("");
+                    Value.Log.Add(string.Concat(eventLog.Log, " log counts"));
+                    Value.Log.Add(string.Concat("  Critical    ", criticalCount.ToString()));
+                    Value.Log.Add(string.Concat("  Error       ", errorCount.ToString()));
+                    Value.Log.Add(string.Concat("  Warning     ", warningCount.ToString()));
+                    Value.Log.Add(string.Concat("  Information ", informationCount.ToString()));
+                    Value.Log.Add(string.Concat("  Unknown     ", eventLog.Entries.Count - (criticalCount + errorCount + warningCount + informationCount)));
                 }
             }
 
@@ -114,11 +114,11 @@ namespace EventLogSend.Method
                             }
                         }
                     }
-                    Line.Store.Add("");
-                    Line.Store.Add(string.Concat(eventLog.Log, " log counts"));
-                    Line.Store.Add(string.Concat("  AuditFailure ", auditFailureCount.ToString()));
-                    Line.Store.Add(string.Concat("  AuditSuccess ", auditSuccessCount.ToString()));
-                    Line.Store.Add(string.Concat("  Unknown      ", eventLog.Entries.Count - (auditFailureCount + auditSuccessCount)));
+                    Value.Log.Add("");
+                    Value.Log.Add(string.Concat(eventLog.Log, " log counts"));
+                    Value.Log.Add(string.Concat("  AuditFailure ", auditFailureCount.ToString()));
+                    Value.Log.Add(string.Concat("  AuditSuccess ", auditSuccessCount.ToString()));
+                    Value.Log.Add(string.Concat("  Unknown      ", eventLog.Entries.Count - (auditFailureCount + auditSuccessCount)));
                 }
             }
         }
