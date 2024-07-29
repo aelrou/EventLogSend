@@ -13,10 +13,18 @@ namespace EventLogSend
 
             ReportEventLog.Properties(eventLogs);
 
-            TypesCopy.Report(eventLogs);
+            Statistics.Report("System");
+            SystemSources.Report( "Microsoft-Windows-WHEA-Logger");
+            SystemTypes.Report();
 
-            SecurityAuditLog.Report(eventLogs);
+            Statistics.Report("Application");
+            //ApplicationSources.Report();
+            ApplicationTypes.Report();
 
+            Statistics.Report("Security");
+            SecuritySources.Report();
+
+            Console.WriteLine("Writing log file");
             Log.Write(Value.Log);
         }
     }
@@ -27,9 +35,14 @@ namespace EventLogSend
         internal static readonly string LogFile = "EventLogSend.log";
         internal static List<DateTime> OldestDate = new List<DateTime>();
 
+        //internal static HashSet<EventLog> eventLogsHashset = new HashSet<EventLog>();
+        internal static HashSet<EventLogEntry> systemLogEntryHashset = new HashSet<EventLogEntry>();
+        internal static HashSet<EventLogEntry> applicationLogEntryHashset = new HashSet<EventLogEntry>();
+        internal static HashSet<EventLogEntry> securityLogEntryHashset = new HashSet<EventLogEntry>();
+
         internal static List<string> Log = new List<string>();
 
-        internal static readonly string DateFormat = "yyyy-MM-dd HH:mm:ss.ffff";
+        internal static readonly string DateFormat = "yyyy-MM-dd HH:mm:ss.fff";
 
         const char carriagereturn = (char)13; // \r
         internal static readonly string cr = carriagereturn.ToString();

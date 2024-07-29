@@ -13,9 +13,49 @@ namespace EventLogSend
             //HashSet<EventLogEntry> systemLogEntriesHs = new HashSet<EventLogEntry>();
 
             //EventLog[] eventLogs = EventLog.GetEventLogs();
-            Console.WriteLine("Processing EventLog");
+            //Console.WriteLine("Processing EventLogs");
             //Console.WriteLine("Populating HashSet<EventLog>");
-            //eventLogsHs = eventLogs.ToHashSet();
+            //Value.eventLogsHashset = eventLogs.ToHashSet();
+
+            foreach (EventLog eventLog in eventLogs)
+            {
+                string logName = "System";
+                if (eventLog.Log.Equals(logName))
+                {
+                    Console.WriteLine(string.Concat("Populating ", eventLog.Log, " HashSet<EventLogEntry>"));
+                    foreach (EventLogEntry eventLogEntry in eventLog.Entries)
+                    {
+                        if (eventLogEntry.TimeGenerated > Value.OldestDate[0])
+                        {
+                            Value.systemLogEntryHashset.Add(eventLogEntry);
+                        }
+                    }
+                }
+                logName = "Application";
+                if (eventLog.Log.Equals(logName))
+                {
+                    Console.WriteLine(string.Concat("Populating ", eventLog.Log, " HashSet<EventLogEntry>"));
+                    foreach (EventLogEntry eventLogEntry in eventLog.Entries)
+                    {
+                        if (eventLogEntry.TimeGenerated > Value.OldestDate[0])
+                        {
+                            Value.applicationLogEntryHashset.Add(eventLogEntry);
+                        }
+                    }
+                }
+                logName = "Security";
+                if (eventLog.Log.Equals(logName))
+                {
+                    Console.WriteLine(string.Concat("Populating ", eventLog.Log, " HashSet<EventLogEntry>"));
+                    foreach (EventLogEntry eventLogEntry in eventLog.Entries)
+                    {
+                        if (eventLogEntry.TimeGenerated > Value.OldestDate[0])
+                        {
+                            Value.securityLogEntryHashset.Add(eventLogEntry);
+                        }
+                    }
+                }
+            }
 
             //foreach (EventLog eventLog in eventLogsHs)
             //{
@@ -45,6 +85,7 @@ namespace EventLogSend
             //    }
             //}
 
+            Console.WriteLine("");
             Value.Log.Add(string.Concat("MachineName ", Environment.MachineName));
             Value.Log.Add(string.Concat("    OS Name ", RegistryOs.FriendlyName()));
             Value.Log.Add(string.Concat(" OS Version ", Environment.OSVersion));

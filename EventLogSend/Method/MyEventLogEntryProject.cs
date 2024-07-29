@@ -14,7 +14,7 @@ namespace MyCSharpNamespace
                 {
                     foreach (EventLogEntry eventLogEntry in eventLog.Entries)
                     {
-                        if (eventLogEntry.TimeWritten >= dateTime)
+                        if (eventLogEntry.TimeGenerated >= dateTime)
                         {
                             if (eventLogEntry.EntryType.ToString().Equals("FailureAudit"))
                             {

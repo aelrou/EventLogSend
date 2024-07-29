@@ -4,27 +4,20 @@
     {
         internal static string Filter(string message, int keep)
         {
-            if (message.Contains("The description for Event ID"))
-            {
-                return "";
-            }
-            //message = message.Replace("The details view of this entry contains further information.", "");
-            message = message.Replace((char)09, (char)32); // Remove tabs
-            message = message.Replace((char)10, (char)32); // Remove line feeds
-            message = message.Replace((char)13, (char)32); // Remove carriage returns
-            message = message.Replace((char)160, (char)32); // Remove non-breaking spaces
+            if (message.Contains("The description for Event ID")) return "";
+            message = message.Replace(Value.crlf, " "); // Remove Cr+Lf
+            message = message.Replace(Value.cr, " "); // Remove carriage returns
+            message = message.Replace(Value.lf, " "); // Remove line feeds
+            message = message.Replace(Value.t, " "); // Remove tabs
+            message = message.Replace(Value.nbsp, " "); // Remove non-breaking spaces
             while (true)
             {
-                // Collapse consecutive spaces
-                message = message.Replace("  ", " ");
+                message = message.Replace("  ", " "); // Collapse consecutive spaces
                 int index = message.IndexOf("  "); 
-                if (index == -1)
-                {
-                    break;
-                }
+                if (index == -1) break;
             }
-            message = message.Replace(" , ", ", ");
-            message = message[..Math.Min(keep, message.Length)];
+            message = message.Replace(" ,", ","); // Remove spaces preceding commas
+            message = message[..Math.Min(keep, message.Length)]; // Truncate to specified character count
             return message;
         }
     }

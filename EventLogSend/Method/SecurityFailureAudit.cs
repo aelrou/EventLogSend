@@ -7,7 +7,6 @@ namespace EventLogSend.Method
         internal static Dictionary<string, string> Parse(EventLogEntry entry)
         {
             Dictionary<string, string> messageData = new Dictionary<string, string>();
-
             // Check entry source is "Security" EventLog
             if (entry.Source.Equals("Microsoft-Windows-Security-Auditing"))
             {
@@ -84,7 +83,6 @@ namespace EventLogSend.Method
                         //foreach (string line in networkSet) { Console.WriteLine(line); }
                         //foreach (string line in authSet) { Console.WriteLine(line); }
 
-                        //Dictionary<string, string> subjectData = new Dictionary<string, string>();
                         foreach (string line in subjectSet)
                         {
                             string section = @"Subject:";
@@ -120,7 +118,6 @@ namespace EventLogSend.Method
 
                         }
 
-                        //Dictionary<string, string> loginInfoData = new Dictionary<string, string>();
                         foreach (string line in loginFailSet)
                         {
                             string section = @"Account For Which Logon Failed:";
@@ -143,7 +140,6 @@ namespace EventLogSend.Method
                             }
                         }
 
-                        //Dictionary<string, string> newLogonData = new Dictionary<string, string>();
                         foreach (string line in failInfoSet)
                         {
                             string section = @"Failure Information:";
@@ -166,7 +162,6 @@ namespace EventLogSend.Method
                             }
                         }
 
-                        //Dictionary<string, string> processData = new Dictionary<string, string>();
                         foreach (string line in processSet)
                         {
                             string section = @"Process Information:";
@@ -183,7 +178,6 @@ namespace EventLogSend.Method
                             }
                         }
 
-                        //Dictionary<string, string> networkData = new Dictionary<string, string>();
                         foreach (string line in networkSet)
                         {
                             string section = @"Network Information:";
@@ -206,7 +200,6 @@ namespace EventLogSend.Method
                             }
                         }
 
-                        //Dictionary<string, string> authData = new Dictionary<string, string>();
                         foreach (string line in authSet)
                         {
                             string section = @"Detailed Authentication Information:";
@@ -240,27 +233,12 @@ namespace EventLogSend.Method
                                 messageData.Add(string.Concat(section, " ", key), LineGetValue(@key, line));
                             }
                         }
-
-                        //Console.WriteLine("Dictionary lookups");
-                        //foreach (var pair in subjectData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
-                        //foreach (var pair in loginInfoData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
-                        //foreach (var pair in newLogonData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
-                        //foreach (var pair in processData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
-                        //foreach (var pair in networkData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
-                        //foreach (var pair in authData) { Console.WriteLine(string.Concat(pair.Key, " ", pair.Value)); }
-
-                        //messageData.Add(subjectData);
-                        //messageData.Add(loginInfoData);
-                        //messageData.Add(newLogonData);
-                        //messageData.Add(processData);
-                        //messageData.Add(networkData);
-                        //messageData.Add(authData);
                     }
                 }
             }
             return messageData;
         }
-        private static bool LineKeyCheck(string key, string line)
+        static bool LineKeyCheck(string key, string line)
         {
             if (line.Trim().StartsWith(key.Trim()))
             {
@@ -268,7 +246,7 @@ namespace EventLogSend.Method
             }
             return false;
         }
-        private static string LineGetValue(string key, string line)
+        static string LineGetValue(string key, string line)
         {
             int position = line.IndexOf(key);
             string value = "";

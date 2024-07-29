@@ -2,7 +2,7 @@
   "profiles": {
     "EventLogSend": {
       "commandName": "Project",
-      "commandLineArgs": "999 \"C:\\Users\\Public\\EventLogSend\""
+      "commandLineArgs": "9999 \"C:\\Users\\Public\\EventLogSend\""
     }
   }
 }
