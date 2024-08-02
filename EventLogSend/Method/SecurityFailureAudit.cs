@@ -16,7 +16,8 @@ namespace EventLogSend.Method
                     // Check entry detail is "4625 An account failed to log on."
                     if (entry.InstanceId.Equals(4625))
                     {
-                        string[] failureDataLines = entry.Message.Split(new string[] { Value.crlf, Value.cr, Value.lf }, StringSplitOptions.None);
+                        //string[] failureDataLines = entry.Message.Split(new string[] { Value.crlf, Value.cr, Value.lf }, StringSplitOptions.None);
+                        string[] failureDataLines = entry.Message.Split(new string[] { "\r\n","\r","\n" }, StringSplitOptions.None);
                         int dataLineCount = failureDataLines.Length;
 
                         int startPosition = 99;

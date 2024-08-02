@@ -16,7 +16,7 @@ namespace EventLogSend.Method
                     // Check entry detail is "4624 An account was successfully logged on."
                     if (entry.InstanceId.Equals(4624))
                     {
-                        string[] successDataLines = entry.Message.Split(new string[] { Value.crlf, Value.cr, Value.lf }, StringSplitOptions.None);
+                        string[] successDataLines = entry.Message.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
                         int dataLineCount = successDataLines.Length;
 
                         int startPosition = 99;

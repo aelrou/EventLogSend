@@ -9,6 +9,8 @@ namespace EventLogSend
         {
             new MainArgs(args);
 
+            ASCII.FillTables();
+
             EventLog[] eventLogs = EventLog.GetEventLogs();
 
             ReportEventLog.Properties(eventLogs);
@@ -43,19 +45,5 @@ namespace EventLogSend
         internal static List<string> Log = new List<string>();
 
         internal static readonly string DateFormat = "yyyy-MM-dd HH:mm:ss.fff";
-
-        const char carriagereturn = (char)13; // \r
-        internal static readonly string cr = carriagereturn.ToString();
-
-        const char linefeed = (char)10; // \n
-        internal static readonly string lf = linefeed.ToString();
-
-        internal static readonly string crlf = string.Concat(cr, lf);
-
-        const char tab = (char)09; // \t
-        internal static readonly string t = tab.ToString();
-
-        const char nbspace = (char)160; // Non-breaking space
-        internal static readonly string nbsp = nbspace.ToString();
     }
 }

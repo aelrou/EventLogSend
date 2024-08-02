@@ -5,11 +5,19 @@
         internal static string Filter(string message, int keep)
         {
             if (message.Contains("The description for Event ID")) return "";
-            message = message.Replace(Value.crlf, " "); // Remove Cr+Lf
-            message = message.Replace(Value.cr, " "); // Remove carriage returns
-            message = message.Replace(Value.lf, " "); // Remove line feeds
-            message = message.Replace(Value.t, " "); // Remove tabs
-            message = message.Replace(Value.nbsp, " "); // Remove non-breaking spaces
+            message = ASCII.SubstituteAmbiguous(message);
+            string[] result = ASCII.CheckAscii(message); // Check for non ASCII characters
+            if (result[1].Equals("0")) { }
+            else
+            {
+                Console.WriteLine(result[2]);
+                char[] charArray = result[2].ToCharArray();
+                List<string> charList = new List<string>();
+                foreach (char c in charArray) { charList.Add(c.ToString()); }
+                message = ASCII.ReplaceCharList(message, charList, ""); // Remove non ASCII characters
+            }
+            message = ASCII.ReplaceCharList(message, ASCII.linebreak, "");
+            message = ASCII.ReplaceCharList(message, ASCII.whitespace, " ");
             while (true)
             {
                 message = message.Replace("  ", " "); // Collapse consecutive spaces
